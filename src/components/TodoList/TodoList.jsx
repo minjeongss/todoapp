@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import AddList from './AddList';
-import Todo from './Todo';
+import AddList from '../AddList/AddList';
+import Todo from '../Todo/Todo';
 import styles from './TodoList.module.css';
 export default function TodoList({nowFilter}) {
     const [todo,setTodo]=useState([
