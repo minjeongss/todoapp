@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AddList from './AddList';
 import Todo from './Todo';
-
+import styles from './TodoList.module.css';
 export default function TodoList({nowFilter}) {
     const [todo,setTodo]=useState([
         {id:'1',text:'공부하기',status:'active'},
@@ -17,11 +17,11 @@ export default function TodoList({nowFilter}) {
     const handleDelete=(deleted)=>{
         setTodo(todo.filter(item=>item.id!==deleted.id));
     }
-
     const filtered=UpdateFilter({todo,nowFilter});
+
     return (
-        <section>
-            <ul>
+        <section className={styles.container}>
+            <ul className={styles.list}>
                 {
                     filtered.map(item=>(
                         <Todo 
@@ -40,7 +40,7 @@ export default function TodoList({nowFilter}) {
 
 function UpdateFilter({todo,nowFilter}){
     if(nowFilter==='all'){
-        return todo;
+        return todo; //전체를 출력
     }
-    return todo.filter(item=>item.status===nowFilter);
+    return todo.filter(item=>item.status===nowFilter); //현재 status만 해당되게 출력
 }

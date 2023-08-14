@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {v4 as uuidv4} from 'uuid';
+import styles from './AddList.module.css';
 
 export default function AddList({onAdd}) {
     const [text,setText]=useState('');
@@ -17,9 +18,14 @@ export default function AddList({onAdd}) {
         setText('');
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={text} onChange={handleChange} placeholder='Add TODO'/>
-            <button>ADD</button>
+        <form onSubmit={handleSubmit} className={styles.form}>
+            <input 
+                type="text" 
+                value={text} 
+                onChange={handleChange} 
+                placeholder='Add TODO'
+                className={styles.input}/>
+            <button className={styles.button}>ADD</button>
         </form>
     );
 }

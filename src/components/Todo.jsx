@@ -1,5 +1,7 @@
 import React from 'react';
 import {FcEmptyTrash} from 'react-icons/fc';
+import styles from './Todo.module.css';
+
 export default function Todo({todo,onUpdate,onDelete}) {
     const {text,status}=todo;
     const handleChange=(e)=>{
@@ -10,15 +12,18 @@ export default function Todo({todo,onUpdate,onDelete}) {
     }
     const handleDelete=()=>onDelete(todo);
     return (
-        <li>
+        <li className={styles.todo}>
             <input 
                 type="checkbox" 
                 id="checkbox" 
                 checked={status==='completed'}
-                onChange={handleChange}    
+                onChange={handleChange}
+                className={styles.checkbox}    
             />
-            <label htmlFor='checkbox'>{text}</label>
-            <button onClick={handleDelete}><FcEmptyTrash /></button>
+            <label htmlFor='checkbox' className={styles.text}>{text}</label>
+            <span className={styles.icon}>
+                <button onClick={handleDelete} className={styles.button}><FcEmptyTrash /></button>
+            </span>
         </li>
     );
 }

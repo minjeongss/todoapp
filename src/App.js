@@ -7,10 +7,10 @@ const filters=['all','active','completed'];
 function App() {
   const [filter,setFilter]=useState(filters[0]);
   return (
-    <div>
+    <>
       <Header allFilter={filters} nowFilter={filter} onChange={filter=>setFilter(filter)}/>
       <TodoList nowFilter={filter}/>
-    </div>
+    </>
   );
 }
 
